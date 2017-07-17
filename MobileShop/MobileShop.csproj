@@ -157,8 +157,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\UserModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,7 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\dist\css\sb-admin-2.css" />
+    <Content Include="Assets\Admin\dist\js\custom.js" />
     <Content Include="Assets\Admin\dist\js\sb-admin-2.js" />
+    <Content Include="Assets\Admin\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.js" />
     <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Assets\Common\bootstrap.min.css" />
@@ -187,6 +191,8 @@
     <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_NavbarTop.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -216,7 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\Admin\controller\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -225,6 +231,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{770d9b3f-4f38-4ad8-baff-a164dfaa1f29}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{228d845e-b240-4858-9d70-5b863cd7c9d8}</Project>
       <Name>Model</Name>

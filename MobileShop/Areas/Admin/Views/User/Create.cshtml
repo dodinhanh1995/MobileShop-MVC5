@@ -1,0 +1,65 @@
+﻿@model MobileShop.Areas.Admin.Models.UserModel
+
+@{
+    ViewBag.Title = "Thêm người dùng mới";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>Thêm người dùng mới</h3>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.UserName)</span>
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.Password)</span>
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.ConfirmPassword)</span>
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.FullName)</span>
+            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.Address)</span>
+            @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.Email)</span>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.Phone)</span>
+            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon">@Html.LabelFor(model => model.Status)</span>
+            @Html.DropDownListFor(model => model.Status, null, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-plus" aria-hidden="true"></i> Tạo mới
+            </button>
+        </div>
+    </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
