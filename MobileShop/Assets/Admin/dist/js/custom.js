@@ -37,5 +37,19 @@ function selectImage(action, id) {
     finder.popup();
 }
 
+function convertMetaTitle(action) {
+    var name = $('#Name').val();
+    $.ajax({
+        method: "GET",
+        url: action + name,
+        data :{name : name}
+    }).success(function (result) {
+        if (result != '') {
+            $('#MetaTitle').val(result);
+        }
+    });
+}
+
+
 
 

@@ -163,6 +163,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
@@ -1171,6 +1172,9 @@
     <Content Include="Assets\Common\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Assets\Common\ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

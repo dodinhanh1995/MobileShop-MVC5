@@ -55,7 +55,7 @@ namespace Model.DAO
 
         public bool CheckNameIsExist(string name)
         {
-            return db.Slides.Count(x => x.Name == name) > 0;
+            return db.Slides.Count(x => x.Name == name.Trim()) > 0;
         }
 
         public bool Update(Slide slide)

@@ -11,7 +11,7 @@ namespace MobileShop.Areas.Admin.Controllers
         // GET: Admin/Slide
         public ActionResult Index()
         {
-            return View(SlideDAO.Instance.GetListAll());
+            return View(ProductCategoryDAO.Instance.GetListAll());
         }
 
         [HttpPost]
@@ -21,7 +21,7 @@ namespace MobileShop.Areas.Admin.Controllers
 
             foreach (string item in slideIds)
             {
-                SlideDAO.Instance.Delete(item);
+                ProductCategoryDAO.Instance.Delete(item);
             }
             return RedirectToAction("Index");
         }
@@ -39,8 +39,8 @@ namespace MobileShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (SlideDAO.Instance.CheckNameIsExist(slide.Name))
-                    ModelState.AddModelError("UserName", "Tên quảng cáo đã tồn tại");
+                if (ProductCategoryDAO.Instance.CheckNameIsExist(slide.Name))
+                    ModelState.AddModelError("Name", "Tên quảng cáo đã tồn tại");
                 else if (SlideDAO.Instance.Create(slide))
                 {
                     SetAlert("Tạo mới quảng cáo <b>" + slide.Name + "</b> thành công.");
