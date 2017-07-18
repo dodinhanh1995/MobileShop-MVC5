@@ -1170,6 +1170,7 @@
     <Content Include="Assets\Common\ckeditor\.htaccess" />
     <Content Include="Assets\Common\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Assets\Common\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

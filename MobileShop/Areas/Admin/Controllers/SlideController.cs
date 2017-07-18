@@ -28,7 +28,7 @@ namespace MobileShop.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            DisplayOrderList(); 
+            DisplayOrderList();
             TargetList();
             StatusList();
             return View();
@@ -62,16 +62,21 @@ namespace MobileShop.Areas.Admin.Controllers
             Slide slide = SlideDAO.Instance.GetDetail(id.Value);
             if (slide == null)
                 return HttpNotFound();
+            DisplayOrderList(slide.DisplayOrder);
             TargetList(slide.Target);
+            StatusList(slide.Status);
             return View(slide);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
         public ActionResult Edit([Bind(Exclude = "CreatedDate")] Slide slide)
         {
+            var oldSlide = SlideDAO.Instance.GetDetail(slide.Id);
+            slide.Image = oldSlide.Image;
+            slide.CreatedDate = oldSlide.CreatedDate;
             if (ModelState.IsValid)
             {
-                if (SlideDAO.Instance.CheckNameIsExist(slide.Name) && SlideDAO.Instance.GetDetail(slide.Id).Name != slide.Name)
+                if (SlideDAO.Instance.CheckNameIsExist(slide.Name) && oldSlide.Name != slide.Name)
                     ModelState.AddModelError("Name", "Tên quảng cáo đã tồn tại");
                 else if (SlideDAO.Instance.Update(slide))
                 {
@@ -81,8 +86,17 @@ namespace MobileShop.Areas.Admin.Controllers
                 else
                     ModelState.AddModelError("", "Có lỗi xảy ra khi cập nhật thông tin! Vui lòng thử lại.");
             }
+            DisplayOrderList(slide.DisplayOrder);
             TargetList(slide.Target);
+            StatusList(slide.Status);
             return View(slide);
+        }
+
+        public string ChangeImage(int id, string image)
+        {
+            if (id.ToString() == null)
+                return "Mã quảng cáo không tồn tại!";
+            return SlideDAO.Instance.ChangeImage(id, image);
         }
 
         public void TargetList(string selected = "_self")
@@ -110,7 +124,5 @@ namespace MobileShop.Areas.Admin.Controllers
             }
             ViewBag.DisplayOrder = list;
         }
-
-
     }
 }

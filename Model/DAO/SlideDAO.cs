@@ -1,6 +1,7 @@
 ﻿using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace Model.DAO
@@ -15,24 +16,24 @@ namespace Model.DAO
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     lock (key)
                     {
                         instance = new SlideDAO();
-                        db  = new MobileShopDbContext();
+                        db = new MobileShopDbContext();
                     }
                 }
                 return instance;
             }
-            
+
         }
 
         SlideDAO() { }
 
         public List<Slide> GetListAll()
         {
-            return db.Slides.OrderBy(x=>x.DisplayOrder).ToList();
+            return db.Slides.OrderBy(x => x.DisplayOrder).ToList();
         }
 
         public bool Create(Slide slide)
@@ -56,16 +57,16 @@ namespace Model.DAO
         {
             return db.Slides.Count(x => x.Name == name) > 0;
         }
-        
+
         public bool Update(Slide slide)
         {
             try
             {
-                    db.SaveChanges();
-                    return true;
+                db.Set<Slide>().AddOrUpdate(slide);
+                db.SaveChanges();
+                return true;
             }
             catch { return false; }
-
         }
 
         public bool Delete(string id)
@@ -87,5 +88,15 @@ namespace Model.DAO
             }
         }
 
+        public string ChangeImage(int id, string image)
+        {
+            var slide = GetDetail(id);
+            if (slide == null)
+                return "Thông tin quảng cáo không tồn tại!";
+            slide.Image = image;
+            db.SaveChanges();
+            return "";
+        }
+        
     }
 }

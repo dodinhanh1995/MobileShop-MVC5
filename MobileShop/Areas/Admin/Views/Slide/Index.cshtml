@@ -48,7 +48,7 @@
                                     <td>@slide.Name</td>
                                     <td><img src="~/Assets/Common/images/Slides/@slide.Image" width="100%" /></td>
                                     <td>@slide.DisplayOrder</td>
-                                    <td>@slide.Link</td>
+                                    <td><a href="@slide.Link">@slide.Link</a></td>
                                     <td>@slide.CreatedDate.ToString("dd/MM/yyyy")</td>
                                     <td>@(slide.Status == true ? "Hiển thị" : "Ẩn" )</td>
                                     <td><a class="" href="@Url.Action("Edit", new { id = slide.Id })"><i class="fa fa-edit"></i> Edit</a></td>

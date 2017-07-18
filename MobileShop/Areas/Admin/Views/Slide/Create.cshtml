@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h3>Thêm quảng cáo mới</h3>
+        <h2>Thêm quảng cáo mới</h2>
         <hr />
         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group input-group">
@@ -58,16 +58,4 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $('#browse').click(function () {
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (fileUrl) {
-                fileUrl = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
-                $('#Image').val(fileUrl);
-            };
-            finder.popup();
-        });
-
-        CKEDITOR.replace('Description');
-    </script>
 }
