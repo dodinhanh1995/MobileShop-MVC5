@@ -34,7 +34,7 @@ namespace MobileShop.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
         public ActionResult Create(Slide slide)
         {
             if (ModelState.IsValid)
@@ -49,7 +49,9 @@ namespace MobileShop.Areas.Admin.Controllers
                 else
                     ModelState.AddModelError("", "Có lỗi xảy ra khi tạo mới quảng cáo! Vui lòng thử lại.");
             }
+            DisplayOrderList();
             TargetList();
+            StatusList();
             return View(slide);
         }
 
