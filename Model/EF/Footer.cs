@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -9,9 +9,10 @@ namespace Model.EF
         [StringLength(10)]
         public string Id { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "ntext"), Display(Name ="Nội dung"), Required(ErrorMessage = "Vui lòng nhập nội dung")]
         public string Content { get; set; }
 
-        public bool? Status { get; set; }
+        [Display(Name ="Trạng thái"), Required(ErrorMessage ="Vui lòng chọn trạng thái")]
+        public bool Status { get; set; }
     }
 }

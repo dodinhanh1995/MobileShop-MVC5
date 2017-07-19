@@ -171,6 +171,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\controller\footer.js" />
     <Content Include="Assets\Admin\controller\menuType.js" />
     <Content Include="Assets\Admin\dist\css\sb-admin-2.css" />
     <Content Include="Assets\Admin\controller\custom.js" />
@@ -1138,6 +1140,9 @@
     <Content Include="Assets\Common\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Assets\Common\ckfinder\translations.txt" />
     <Content Include="Assets\Common\images\arrow_up.png" />
+    <Content Include="Assets\Common\images\dribbble.png" />
+    <Content Include="Assets\Common\images\facebook.png" />
+    <Content Include="Assets\Common\images\linkedin.png" />
     <Content Include="Assets\Common\images\products\12042017084640samsung_galaxy_s7_g930.png" />
     <Content Include="Assets\Common\images\products\1Hbmicrosoft_lumia_640_xl.png" />
     <Content Include="Assets\Common\images\products\31Fsamsung_galaxy_j5_2016.png" />
@@ -1185,6 +1190,7 @@
     <Content Include="Assets\Common\images\products\gg9microsoft_105.png" />
     <Content Include="Assets\Common\images\products\H6dhtc_e9_dual.png" />
     <Content Include="Assets\Common\images\products\H75asus_zenfone_selfie_zd551kl.png" />
+    <Content Include="Assets\Common\images\skype.png" />
     <Content Include="Assets\Common\images\Slides\Banner_Discount_Travel.png" />
     <Content Include="Assets\Common\images\Slides\banner_error404.png" />
     <Content Include="Assets\Common\images\Slides\Banner_Gift.png" />
@@ -1196,6 +1202,7 @@
     <Content Include="Assets\Common\images\Slides\GetGiftHuge.jpg" />
     <Content Include="Assets\Common\images\Slides\iPhone7_7plus-Red.png" />
     <Content Include="Assets\Common\images\Slides\slide_main6.png" />
+    <Content Include="Assets\Common\images\twitter.png" />
     <Content Include="Assets\images\Slides\Banner_Discount_Travel.png" />
     <Content Include="Assets\images\Slides\banner_error404.png" />
     <Content Include="Assets\images\Slides\Banner_Gift.png" />
@@ -1242,6 +1249,7 @@
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Footer\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

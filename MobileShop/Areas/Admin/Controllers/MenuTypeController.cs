@@ -1,7 +1,4 @@
 ﻿using Model.DAO;
-using Model.EF;
-using System.Collections.Generic;
-using System.Net;
 using System.Web.Mvc;
 
 namespace MobileShop.Areas.Admin.Controllers
