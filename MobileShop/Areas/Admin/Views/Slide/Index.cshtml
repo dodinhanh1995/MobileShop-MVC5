@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>@Html.CheckBox("slideId", htmlAttributes: new { @class = "chkFieldId", value = slide.Id })</td>
                                     <td>@slide.Name</td>
-                                    <td><img src="~/Assets/Common/images/Slides/@slide.Image" width="100%" /></td>
+                                    <td><img style="cursor:pointer" id="img_@slide.Id" src="/Assets/Common/images/Slides/@slide.Image" width="100%" onclick="selectImage('/Slide/ChangeImage/@slide.Id', this.id)" /></td>
                                     <td>@slide.DisplayOrder</td>
                                     <td><a href="@slide.Link">@slide.Link</a></td>
                                     <td>@slide.CreatedDate.ToString("dd/MM/yyyy")</td>

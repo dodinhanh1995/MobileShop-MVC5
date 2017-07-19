@@ -18,6 +18,7 @@
     });
 
     CKEDITOR.replace('Description');
+    CKEDITOR.replace('Detail');
 });
 
 function selectImage(action, id) {

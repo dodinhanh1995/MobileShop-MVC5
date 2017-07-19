@@ -89,6 +89,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -164,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
@@ -1126,6 +1135,53 @@
     <Content Include="Assets\Common\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Assets\Common\ckfinder\translations.txt" />
     <Content Include="Assets\Common\images\arrow_up.png" />
+    <Content Include="Assets\Common\images\products\12042017084640samsung_galaxy_s7_g930.png" />
+    <Content Include="Assets\Common\images\products\1Hbmicrosoft_lumia_640_xl.png" />
+    <Content Include="Assets\Common\images\products\31Fsamsung_galaxy_j5_2016.png" />
+    <Content Include="Assets\Common\images\products\41fhtc_desire_628.png" />
+    <Content Include="Assets\Common\images\products\422blackberry_passport_black.png" />
+    <Content Include="Assets\Common\images\products\47ghtc_10_chinhhang.png" />
+    <Content Include="Assets\Common\images\products\4gFsamsung_galaxy_a7_2017.png" />
+    <Content Include="Assets\Common\images\products\51Fxiaomi_5fpt_32gb.png" />
+    <Content Include="Assets\Common\images\products\59basus_zenfone_2_laser.png" />
+    <Content Include="Assets\Common\images\products\59Ephilips_e170.png" />
+    <Content Include="Assets\Common\images\products\5FHasus_zenfone_6.png" />
+    <Content Include="Assets\Common\images\products\6aalenovo_A7010.png" />
+    <Content Include="Assets\Common\images\products\6F2samsung_galaxy_note_7.png" />
+    <Content Include="Assets\Common\images\products\7B4nokia_230_2_sim.png" />
+    <Content Include="Assets\Common\images\products\81Dphilips_103.png" />
+    <Content Include="Assets\Common\images\products\8B1samsung_galaxy_A5_2016.png" />
+    <Content Include="Assets\Common\images\products\8bFxiaomi_mi_4_fpt.png" />
+    <Content Include="Assets\Common\images\products\8C9microsoft_lumia_950.png" />
+    <Content Include="Assets\Common\images\products\9Hfsamsung_galaxy_j7_prime.png" />
+    <Content Include="Assets\Common\images\products\A3Happle_iphone_7_plus_64gb.png" />
+    <Content Include="Assets\Common\images\products\a56apple_iphone_7_plus_128gb.png" />
+    <Content Include="Assets\Common\images\products\aF6apple_iphone_7_256gb.png" />
+    <Content Include="Assets\Common\images\products\b37apple_iphone_se_64gb.png" />
+    <Content Include="Assets\Common\images\products\BAGlenovo_vibe_p1m.png" />
+    <Content Include="Assets\Common\images\products\Bg1blackberry_passport_silver.png" />
+    <Content Include="Assets\Common\images\products\bGcsamsung_galaxy_a3_2016.png" />
+    <Content Include="Assets\Common\images\products\BHCAAEapple_iphone_7_plus_256gb.png" />
+    <Content Include="Assets\Common\images\products\CC9sony_xperia_xa.png" />
+    <Content Include="Assets\Common\images\products\cd8sony_xperiax_2sim.png" />
+    <Content Include="Assets\Common\images\products\CFBsony_xperia_xz.png" />
+    <Content Include="Assets\Common\images\products\Cggphilips_e310.png" />
+    <Content Include="Assets\Common\images\products\D41blackberry_passport.png" />
+    <Content Include="Assets\Common\images\products\dEBapple_iphone_6s_256gb.png" />
+    <Content Include="Assets\Common\images\products\dGBapple_iphone_5s_64gb.png" />
+    <Content Include="Assets\Common\images\products\eCGapple_iphone_6s_64gb.png" />
+    <Content Include="Assets\Common\images\products\eEclenovo_vibe_p1.png" />
+    <Content Include="Assets\Common\images\products\EG9samsung_galaxy__j7_2016.png" />
+    <Content Include="Assets\Common\images\products\F5Happle_iphone_6s_128gb.png" />
+    <Content Include="Assets\Common\images\products\F6asamsung_galaxy_j5_prime.png" />
+    <Content Include="Assets\Common\images\products\F85lenovo_p70.png" />
+    <Content Include="Assets\Common\images\products\faEoppo_f1s_2017.png" />
+    <Content Include="Assets\Common\images\products\fE7sony_xperia_x.png" />
+    <Content Include="Assets\Common\images\products\FGGhuawei_gr5.png" />
+    <Content Include="Assets\Common\images\products\GG3apple_iphone_7plus_256gb.png" />
+    <Content Include="Assets\Common\images\products\gg9microsoft_105.png" />
+    <Content Include="Assets\Common\images\products\H6dhtc_e9_dual.png" />
+    <Content Include="Assets\Common\images\products\H75asus_zenfone_selfie_zd551kl.png" />
     <Content Include="Assets\Common\images\Slides\Banner_Discount_Travel.png" />
     <Content Include="Assets\Common\images\Slides\banner_error404.png" />
     <Content Include="Assets\Common\images\Slides\Banner_Gift.png" />
@@ -1148,6 +1204,7 @@
     <Content Include="Assets\images\Slides\GetGiftHuge.jpg" />
     <Content Include="Assets\images\Slides\iPhone7_7plus-Red.png" />
     <Content Include="Assets\images\Slides\slide_main6.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -1175,6 +1232,9 @@
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
