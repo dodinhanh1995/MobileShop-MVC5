@@ -6,6 +6,7 @@
     [Table("Menu")]
     public partial class Menu
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Vui lòng nhập tên menu")]
@@ -18,11 +19,13 @@
         [Required(ErrorMessage = "Vui lòng chọn thứ tự hiển thị"), Display(Name = "Thứ tự")]
         public int DisplayOrder { get; set; }
 
-        [StringLength(10)]
+        [StringLength(10), Required(ErrorMessage = "Vui lòng chọn loại Target")]
         public string Target { get; set; }
 
-        public bool? Status { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn trạng thái"), Display(Name = "Trạng thái")]
+        public bool Status { get; set; }
 
+        [Display(Name = "Loại menu")]
         public int? TypeID { get; set; }
 
         public virtual MenuType MenuType { get; set; }
