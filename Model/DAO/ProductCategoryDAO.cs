@@ -61,7 +61,7 @@ namespace Model.DAO
         {
             try
             {
-                var temp = db.ProductCategories.Find(category.Id);
+                var temp = GetDetail(category.Id);
                 temp.Name = category.Name;
                 temp.ParentID = category.ParentID;
                 temp.DisplayOrder = category.DisplayOrder;
@@ -79,7 +79,7 @@ namespace Model.DAO
         {
             try
             {
-                var ProductCategory = db.ProductCategories.Find(int.Parse(id));
+                var ProductCategory = GetDetail(int.Parse(id));
                 if (ProductCategory != null)
                 {
                     db.ProductCategories.Remove(ProductCategory);

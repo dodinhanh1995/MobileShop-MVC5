@@ -171,6 +171,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
@@ -183,8 +184,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\controller\menuType.js" />
     <Content Include="Assets\Admin\dist\css\sb-admin-2.css" />
-    <Content Include="Assets\Admin\dist\js\custom.js" />
+    <Content Include="Assets\Admin\controller\custom.js" />
     <Content Include="Assets\Admin\dist\js\sb-admin-2.js" />
     <Content Include="Assets\Admin\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.js" />
@@ -1235,6 +1237,7 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuType\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1265,7 +1268,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Assets\Admin\controller\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

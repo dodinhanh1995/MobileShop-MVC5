@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -8,14 +8,15 @@ namespace Model.EF
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage ="Vui lòng nhập tên menu")]
+        [StringLength(50), Display(Name ="Tên menu")]
         public string Text { get; set; }
 
-        [StringLength(250)]
+        [StringLength(250), Required(ErrorMessage = "Vui lòng nhập đường dẫn liên kết"), Display(Name ="Đường dẫn")]
         public string Link { get; set; }
 
-        public int? DisplayOrder { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn thứ tự hiển thị"), Display(Name = "Thứ tự")]
+        public int DisplayOrder { get; set; }
 
         [StringLength(10)]
         public string Target { get; set; }

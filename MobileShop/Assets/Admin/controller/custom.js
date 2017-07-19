@@ -16,9 +16,6 @@
         };
         finder.popup();
     });
-
-    CKEDITOR.replace('Description');
-    CKEDITOR.replace('Detail');
 });
 
 function selectImage(action, id) {
@@ -43,7 +40,7 @@ function convertMetaTitle(action) {
     $.ajax({
         method: "GET",
         url: action + name,
-        data :{name : name}
+        data: { name: name }
     }).success(function (result) {
         if (result != '') {
             $('#MetaTitle').val(result);

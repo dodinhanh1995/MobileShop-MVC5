@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -15,7 +15,7 @@ namespace Model.EF
 
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50), Required(ErrorMessage ="Vui lòng nhập tên loại menu"), Display(Name="Tên loại menu")]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,18 +1,16 @@
 ﻿using Model.EF;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace Model.DAO
 {
-    public class SlideDAO
+    public class MenuTypeDAO
     {
-        static SlideDAO instance;
+        static MenuTypeDAO instance;
         static object key = new object();
         static MobileShopDbContext db;
 
-        public static SlideDAO Instance
+        public static MenuTypeDAO Instance
         {
             get
             {
@@ -20,49 +18,48 @@ namespace Model.DAO
                 {
                     lock (key)
                     {
-                        instance = new SlideDAO();
+                        instance = new MenuTypeDAO();
                         db = new MobileShopDbContext();
                     }
                 }
                 return instance;
             }
-
         }
 
-        SlideDAO() { }
+        MenuTypeDAO() { }
 
-        public List<Slide> GetListAll()
+        public List<MenuType> GetListAll()
         {
-            return db.Slides.OrderBy(x => x.DisplayOrder).ToList();
+            return db.MenuTypes.OrderByDescending(x=>x.Id).ToList();
         }
 
-        public bool Create(Slide slide)
+        public bool Create(string name)
         {
             try
             {
-                slide.CreatedDate = DateTime.Now;
-                db.Slides.Add(slide);
+                db.MenuTypes.Add(new MenuType { Name = name });
                 db.SaveChanges();
                 return true;
             }
             catch { return false; }
         }
 
-        public Slide GetDetail(int id)
+        public MenuType GetDetail(int id)
         {
-            return db.Slides.Find(id);
+            return db.MenuTypes.Find(id);
         }
 
         public bool CheckNameIsExist(string name)
         {
-            return db.Slides.Count(x => x.Name == name.Trim()) > 0;
+            return db.MenuTypes.Count(x => x.Name == name.Trim()) > 0;
         }
 
-        public bool Update(Slide slide)
+        public bool Update(int id, string name)
         {
             try
             {
-                db.Set<Slide>().AddOrUpdate(slide);
+                var temp = GetDetail(id);
+                temp.Name = name;
                 db.SaveChanges();
                 return true;
             }
@@ -73,10 +70,10 @@ namespace Model.DAO
         {
             try
             {
-                var slide = GetDetail(int.Parse(id));
-                if (slide != null)
+                var menuType = GetDetail(int.Parse(id));
+                if (menuType != null)
                 {
-                    db.Slides.Remove(slide);
+                    db.MenuTypes.Remove(menuType);
                     db.SaveChanges();
                     return true;
                 }
@@ -87,16 +84,5 @@ namespace Model.DAO
                 return false;
             }
         }
-
-        public string ChangeImage(int id, string image)
-        {
-            var slide = GetDetail(id);
-            if (slide == null)
-                return "Thông tin quảng cáo không tồn tại!";
-            slide.Image = image;
-            db.SaveChanges();
-            return "";
-        }
-        
     }
 }

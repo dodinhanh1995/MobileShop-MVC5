@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h3>Cập nhật thông tin quảng cáo</h3>
         <hr />
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.HiddenFor(model=>model.Image)
+                @Html.HiddenFor(model => model.Image)
                 <img style="cursor:pointer" id="img_@Model.Id" src="/Assets/Common/images/Slides/@Model.Image" width="250" onclick="selectImage('/Slide/ChangeImage/@Model.Id', this.id)" />
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DisplayOrder, null, new { @class = "form-control" } )
+                @Html.DropDownListFor(model => model.DisplayOrder, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,7 +67,7 @@
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.DropDownListFor(model => model.Status , null, new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.Status, null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -75,7 +75,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit"  class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu lại</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu lại</button>
             </div>
         </div>
     </div>
@@ -84,4 +84,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        CKEDITOR.replace('Description');
+    </script>
 }
