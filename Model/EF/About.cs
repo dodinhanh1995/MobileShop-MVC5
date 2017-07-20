@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -8,16 +8,13 @@ namespace Model.EF
     {
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50), Display(Name="Tên")]
         public string Name { get; set; }
 
-        [StringLength(500)]
-        public string Description { get; set; }
-
-        [StringLength(250)]
+        [StringLength(250), Display(Name = "Ảnh đại diện")]
         public string Image { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [Column(TypeName = "ntext"), Display(Name = "Chi tiết")]
         public string Detail { get; set; }
 
         [StringLength(250)]
@@ -29,6 +26,7 @@ namespace Model.EF
         [StringLength(250)]
         public string MetaDescriptions { get; set; }
 
-        public bool? Status { get; set; }
+        [Display(Name = "Trạng thái")]
+        public bool Status { get; set; }
     }
 }
