@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\controller\contact.js" />
     <Content Include="Assets\Admin\controller\footer.js" />
     <Content Include="Assets\Admin\controller\menuType.js" />
     <Content Include="Assets\Admin\dist\css\sb-admin-2.css" />
@@ -1250,6 +1252,8 @@
     <Content Include="Areas\Admin\Views\Menu\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Footer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Detail.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
