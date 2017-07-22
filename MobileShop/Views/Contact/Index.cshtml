@@ -1,0 +1,107 @@
+﻿@model Model.EF.Contact
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "Liên hệ";
+    var map = (Model.EF.Map)ViewBag.Maps;
+}
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+@{ MvcCaptcha contactCaptcha = new MvcCaptcha("ContactCaptcha"); }
+<style>
+    #map {
+        height: 430px;
+        width: 100%;
+    }
+</style>
+
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            <div class="col span_1_of_3">
+                <div class="contact-form">
+                    <h2>Liên hệ với chúng tôi</h2>
+
+                    @if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.Success</div>
+                    }
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <div>
+                            <span><label>Họ Tên</label></span>
+                            <span>@Html.TextBoxFor(model => model.Name)</span>
+                        </div>
+                        <div>
+                            <span><label>Email</label></span>
+                            <span>@Html.TextBoxFor(model => model.Email)</span>
+                        </div>
+                        <div>
+                            <span><label>Số điện thoại</label></span>
+                            <span>@Html.TextBoxFor(model => model.Phone)</span>
+                        </div>
+                        <div>
+                            <span><label>Nội dung yêu cầu</label></span>
+                            <span>@Html.TextAreaFor(model => model.Content)</span>
+                        </div>
+                        <div>
+                            @Html.Captcha(contactCaptcha)
+                            @Html.TextBox("CaptchaCode")
+                        </div>
+
+                        <div>
+                            <span><input type="submit" value="Gửi"></span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col span_2_of_3">
+                <div class="company_address">
+                    <h2>AnhDo Mobile :</h2>
+                    <p>K10 P. Mộ Lao, Km10, Đường Nguyễn Trãi, Q. Đông, Hà, Mộ Lao, Hà Đông, Hà Nội</p>
+                    <p>Phone:(00) 222 666 444</p>
+                    <p>Fax: (000) 000 00 00 0</p>
+                    <p>Email: <span>info@anhdomobile.com</span></p>
+                </div>
+                <div class="contact_info">
+                    <div id="map"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Assets/Client/js/contactController.js"></script>
+    <script>
+        function initMap() {
+            var @map.Name = { lat: @map.Latitude, lng: @map.Longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 18,
+                center: @map.Name
+                });
+            var marker = new google.maps.Marker({
+                position: @map.Name,
+                map: map,
+                title: 'Bản đồ AnhDo Mobile'
+            });
+
+            var contentString = '@Html.Raw(map.Description.Trim())';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmDhpy24y2mmoi7A5cSkD_0w5XRr1b79Y&callback=initMap">
+    </script>
+
+
+}

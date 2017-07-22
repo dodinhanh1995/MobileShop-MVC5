@@ -1,0 +1,129 @@
+﻿@model Model.EF.Product
+
+@{
+    ViewBag.Title = "Điện thoại " + Model.Name;
+}
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="back-links">
+                <p>
+                    <a href="~/">Home</a> >>>> <a href="/dien-thoai-@Model.ProductCategory.MetaTitle">@Model.ProductCategory.Name</a> >>>> <a>@Model.Name</a>
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            <div class="cont-desc col-md-9">
+                <div class="product-details">
+                    <div class="grid images_3_of_2">
+                        <div id="container">
+                            <div id="products_example">
+                                <div id="products">
+                                    <div class="slides_container">
+                                        <a href="">
+                                            <img src="~/Assets/Common/images/products/@Model.Image" alt="@Model.Name" title="@Model.Name" width="170" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc span_3_of_2">
+                        <p>Mã SP: @Model.Code</p>
+                        <h2>@Model.Name </h2>
+                        @if (Model.Quantity > 0)
+                        {
+                            <div class="available">
+                                <p>Màu có sẵn :</p>
+                                <ul>
+                                    <li>
+                                        Màu:
+                                        <select>
+                                            <option>Silver</option>
+                                            <option>Black</option>
+                                            <option>Dark Black</option>
+                                            <option>Red</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="price">
+                                @if (Model.PromotionPrice.HasValue)
+                                {
+                                    <p>
+                                        <span>
+                                            @(Model.PromotionPrice.Value.ToString("N0"))<sup>đ</sup>
+                                        </span>
+                                        <del>@(Model.Price.ToString("N0"))<sup>đ</sup></del>
+                                        (Giá @(Model.IncludeVAT ? "đã" : "chưa") bao gồm VAT)
+                                    </p>
+                                    
+                                }
+                                else
+                                {
+                                    <p>
+                                        <span>
+                                            @(Model.Price.ToString("N0"))<sup>đ</sup>
+                                        </span>(Giá @(Model.IncludeVAT ? "đã" : "chưa") bao gồm VAT)
+                                    </p>
+                                }
+
+                                
+                            </div>
+                            <p>@Html.Raw(Model.Description)</p>
+                            <div class="share-desc">
+                                <div class="button"><span><a href="@Url.Action("AddToCart", "Cart")">Mua ngay</a></span></div>
+                                <div class="clear"></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="price">
+                                <p><span>Sản phẩm tạm thời hết hàng</span></p>
+                            </div>
+                        }
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="product_desc">
+                    <div id="horizontalTab">
+                        <div class="resp-tabs-container">
+                            <div class="product-desc">
+                                @Html.Raw(Model.Detail)
+                            </div>
+                            <div class="review">
+                                <div class="your-review">
+                                    <h3>Đánh giá @Model.Name</h3>
+                                    <form>
+                                        <div>
+                                            <span><textarea></textarea></span>
+                                        </div>
+                                        <div>
+                                            <span><input type="submit" value="GỬI"></span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    (function () {
+                        $('#horizontalTab').easyResponsiveTabs({
+                            type: 'default', //Types: default, vertical, accordion
+                            width: 'auto', //auto or any width like 600px
+                            fit: true   // 100% fit in a container
+                        });
+                    });
+                </script>
+            </div>
+            <div class="rightsidebar span_3_of_1" style="width: 23.4%">
+                @{Html.RenderAction("_RightSidebar", "Layout");}
+
+                @{Html.RenderAction("_RelatedProduct", "Detail", new { id = Model.Id });}
+
+            </div>
+        </div>
+    </div>
+</div>

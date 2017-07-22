@@ -1,0 +1,66 @@
+﻿@model List<Model.EF.Product>
+
+@{
+    var category = (Model.EF.ProductCategory)ViewBag.CategoryName;
+    ViewBag.Title = "Điện thoại " + category.Name;
+}
+
+
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="back-links">
+                <p><a href="./">Trang chủ</a> >>>> <a href="">@category.Name</a></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            <div class="container-fluid" style="padding:0">
+                <div class="row">
+                    <div class="col-md-9">
+                        @foreach (var newProduct in Model)
+                        {
+                            <div class="grid_1_of_4 images_1_of_4" style="width:32.3%; margin:1% 1% 1% 0">
+                                <a href="/dien-thoai/@newProduct.MetaTitle-@newProduct.Id">
+                                    <img src="~/Assets/Common/images/products/@newProduct.Image" alt="@newProduct.Name" title="@newProduct.Name" />
+                                </a>
+                                <h2 class="nameProduct">@newProduct.Name</h2>
+
+                                @if (newProduct.PromotionPrice.HasValue)
+                                {
+                                    <div class="price-details">
+                                        <div class="price-number">
+                                            <p><span class="rupees">@newProduct.PromotionPrice.Value.ToString("N0")<sup>đ</sup></span></p>
+                                        </div>
+                                        <div class="add-cart">
+                                            <h4><a href="@Url.Action("AddToCart", "Cart")">Mua ngay</a></h4>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <small class="pull-left"><del>@newProduct.Price.ToString("N0")</del><sup>đ</sup></small>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="price-details">
+                                        <div class="price-number">
+                                            <p><span class="rupees">@newProduct.Price.ToString("N0")<sup>đ</sup></span></p>
+                                        </div>
+                                        <div class="add-cart">
+                                            <h4><a href="@Url.Action("AddToCart", "Cart")">Mua ngay</a></h4>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <div class="rightsidebar span_3_of_1" style="width:100%">
+                            @{Html.RenderAction("_RightSidebar", "Layout");}
+                        </div>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

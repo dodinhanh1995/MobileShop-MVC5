@@ -1,0 +1,12 @@
+﻿@model Model.EF.About
+
+@{
+    ViewBag.Title = Model.Name;
+}
+@if (Model.Status)
+{
+    <img src="~/Assets/Common/images/about/@Model.Image" style="width:100%;" alt="@Model.Name" title="@Model.Name" />
+    <div class="clear"></div>
+        @Html.Raw(Model.Detail)
+}
+
