@@ -12,6 +12,13 @@ namespace MobileShop
             routes.IgnoreRoute("{*botdetect}", new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
+                name: "Search Page",
+                url: "tim-kiem",
+                defaults: new { controller = "Home", action = "Search" },
+                 namespaces: new[] { "MobileShop.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Login Page",
                 url: "dang-nhap",
                 defaults: new { controller = "Login", action = "Index" },

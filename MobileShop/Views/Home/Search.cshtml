@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Kết quả tìm kiếm \"" + ViewBag.CurrentFilter + "\"";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="back-links">
+                <p><b class="text-success" style="font-size:14px">Tìm thấy @Model.Count() kết quả phù hợp với từ khóa "@ViewBag.CurrentFilter"</b></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            <div class="container-fluid" style="padding:0">
+                <div class="row">
+                    <div class="col-md-9">
+                        @foreach (var product in Model)
+                        {
+                            <div class="grid_1_of_4 images_1_of_4" style="width:32.3%; margin:1% 1% 1% 0">
+                                <a href="/dien-thoai/@product.MetaTitle-@product.Id">
+                                    <img src="~/Assets/Common/images/products/@product.Image" alt="@product.Name" title="@product.Name" />
+                                </a>
+                                <h2 class="nameProduct">@product.Name</h2>
+
+                                @if (product.PromotionPrice.HasValue)
+                                {
+                                    <div class="price-details">
+                                        <div class="price-number">
+                                            <p><span class="rupees">@product.PromotionPrice.Value.ToString("N0")<sup>đ</sup></span></p>
+                                        </div>
+                                        <div class="add-cart">
+                                            <h4><a href="@Url.Action("AddToCart", "Cart")">Mua ngay</a></h4>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <small class="pull-left"><del>@product.Price.ToString("N0")</del><sup>đ</sup></small>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="price-details">
+                                        <div class="price-number">
+                                            <p><span class="rupees">@product.Price.ToString("N0")<sup>đ</sup></span></p>
+                                        </div>
+                                        <div class="add-cart">
+                                            <h4><a href="@Url.Action("AddToCart", "Cart")">Mua ngay</a></h4>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                }
+
+                            </div>
+                        }
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <div class="rightsidebar span_3_of_1" style="width:100%">
+                            @{Html.RenderAction("_RightSidebar", "Layout");}
+                        </div>
+                    </div>
+                    @if (Model.PageCount > 1)
+                    {
+                    <div class="col-md-12">
+                        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                        @Html.PagedListPager(Model, page => Url.Action("Search", "Home", new { page, key = ViewBag.CurrentFilter }))
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,8 +9,10 @@
     </ul>
 </div>
 <div class="search_box">
-    <form>
-        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-    </form>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("s", ViewBag.CurrentFilter as string, new {@placeholder="Nhập từ khóa...", @id="txtKeyword", @required="required" })
+        <input type="submit" value="">
+    }
 </div>
 <div class="clear"></div>

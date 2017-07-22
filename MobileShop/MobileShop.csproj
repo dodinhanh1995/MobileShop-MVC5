@@ -220,6 +220,7 @@
     <Content Include="Assets\Client\js\contactController.js" />
     <Content Include="Assets\Client\js\easing.js" />
     <Content Include="Assets\Client\js\move-top.js" />
+    <Content Include="Assets\Client\js\searchController.js" />
     <Content Include="Assets\Common\bootstrap.min.css" />
     <Content Include="Assets\Common\ckeditor\adapters\jquery.js" />
     <Content Include="Assets\Common\ckeditor\CHANGES.html" />
@@ -1236,6 +1237,7 @@
     <Content Include="Assets\Common\images\slides\slide_main6.png" />
     <Content Include="Assets\Common\images\twitter.png" />
     <Content Include="Assets\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1287,6 +1289,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1295,7 +1298,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1321,6 +1326,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

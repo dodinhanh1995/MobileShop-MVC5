@@ -1,7 +1,6 @@
 ﻿using Common.Enum;
 using MobileShop.Models;
 using Model.DAO;
-using Model.EF;
 using System.Web.Mvc;
 using System.Web.Security;
 

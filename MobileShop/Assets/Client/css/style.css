@@ -213,7 +213,7 @@ body {
 .search_box form input[type="submit"] {
 	border: none;
 	cursor: pointer;
-	background: url(../../Common/images/search.png) no-repeat 0px 7px;
+	background: url(../../Common/images/search.png) no-repeat 0px 4px;
 	position: absolute;
 	right: 0;
 	width: 20px;

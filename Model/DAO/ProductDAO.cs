@@ -58,6 +58,12 @@ namespace Model.DAO
             return products.ToPagedList(page ?? 1, 10);
         }
 
+        public IPagedList<Product> SearchList(string searchString, int? page)
+        {
+            var products = db.Products.Where(x => x.Name.Contains(searchString) || x.Code == searchString || x.ProductCategory.Name == searchString);
+            return products.OrderByDescending(x=>x.ViewCount).ToPagedList(page ?? 1, 9);
+        }
+
         /// <summary>
         /// Get new products by created date condition
         /// </summary>
@@ -90,12 +96,17 @@ namespace Model.DAO
             decimal plusThreeMilion = product.Price + 3000000;
             decimal minusThreeMilion = product.Price - 3000000;
             var temp = db.Products.Where(x => x.Status);
-            var related = temp.Where(x=>x.Price < plusThreeMilion && x.Price > minusThreeMilion && x.Id != product.Id).OrderByDescending(x=>x.Price);
+            var related = temp.Where(x => x.Price < plusThreeMilion && x.Price > minusThreeMilion && x.Id != product.Id).OrderByDescending(x => x.Price);
             if (related.Count() < 3)
             {
-                related = temp.Where(x => x.CategoryID == product.CategoryID && x.Id != product.Id).OrderByDescending(x=>x.Price);
+                related = temp.Where(x => x.CategoryID == product.CategoryID && x.Id != product.Id).OrderByDescending(x => x.Price);
             }
             return related.Take(5).ToList();
+        }
+
+        public List<string> ListName(string keyword)
+        {
+            return db.Products.Where(x => x.Name.Contains(keyword)).OrderByDescending(x => x.ViewCount).Select(x => x.Name).Take(6).ToList();
         }
 
 
@@ -116,7 +127,7 @@ namespace Model.DAO
             return db.Products.Find(id);
         }
 
-        
+
         public bool CheckNameIsExist(string name)
         {
             return db.Products.Count(x => x.Name == name.Trim()) > 0;
