@@ -58,6 +58,47 @@ namespace Model.DAO
             return products.ToPagedList(page ?? 1, 10);
         }
 
+        /// <summary>
+        /// Get new products by created date condition
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public List<Product> ListAll(int quantity = 4)
+        {
+            return db.Products.Where(x => x.Status && x.TopHot == null && x.Quantity > 0).OrderByDescending(x => x.CreatedDate).Take(quantity).ToList();
+        }
+
+        /// <summary>
+        /// Get feature products by top hot condition
+        /// </summary>
+        /// <param name="topHot"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public List<Product> ListAll(bool topHot, int quantity = 4)
+        {
+            return db.Products.Where(x => x.Status && x.Quantity > 0 && x.TopHot != null).OrderByDescending(x => x.TopHot).Take(quantity).ToList();
+        }
+
+        public List<Product> GetProductByCategory(string categoryName)
+        {
+            return db.Products.Where(x => x.Status && x.ProductCategory.MetaTitle == categoryName).OrderByDescending(x => x.CreatedDate).ToList();
+        }
+
+        public List<Product> GetRelatedProductById(int id)
+        {
+            var product = GetDetail(id);
+            decimal plusThreeMilion = product.Price + 3000000;
+            decimal minusThreeMilion = product.Price - 3000000;
+            var temp = db.Products.Where(x => x.Status);
+            var related = temp.Where(x=>x.Price < plusThreeMilion && x.Price > minusThreeMilion && x.Id != product.Id).OrderByDescending(x=>x.Price);
+            if (related.Count() < 3)
+            {
+                related = temp.Where(x => x.CategoryID == product.CategoryID && x.Id != product.Id).OrderByDescending(x=>x.Price);
+            }
+            return related.Take(5).ToList();
+        }
+
+
         public bool Create(Product product)
         {
             try
@@ -75,6 +116,7 @@ namespace Model.DAO
             return db.Products.Find(id);
         }
 
+        
         public bool CheckNameIsExist(string name)
         {
             return db.Products.Count(x => x.Name == name.Trim()) > 0;

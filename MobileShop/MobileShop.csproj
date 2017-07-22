@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BotDetect, Version=4.2.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.2.0\lib\net45\BotDetect.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BotDetect.Web.Mvc, Version=4.2.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.2.0\lib\net45\BotDetect.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CKFinder, Version=2.4.1.2663, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Anh Do\Desktop\ckfinder_aspnet_2.4.2\ckfinder\bin\Release\CKFinder.dll</HintPath>
@@ -174,17 +182,28 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AboutController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MapController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\CustomMembershipProvider.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +216,10 @@
     <Content Include="Assets\Admin\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.js" />
     <Content Include="Assets\Admin\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="Assets\Client\css\style.css" />
+    <Content Include="Assets\Client\js\contactController.js" />
+    <Content Include="Assets\Client\js\easing.js" />
+    <Content Include="Assets\Client\js\move-top.js" />
     <Content Include="Assets\Common\bootstrap.min.css" />
     <Content Include="Assets\Common\ckeditor\adapters\jquery.js" />
     <Content Include="Assets\Common\ckeditor\CHANGES.html" />
@@ -1144,9 +1167,13 @@
     <Content Include="Assets\Common\ckfinder\translations.txt" />
     <Content Include="Assets\Common\images\about\main.jpg" />
     <Content Include="Assets\Common\images\arrow_up.png" />
+    <Content Include="Assets\Common\images\details\detail1.png" />
     <Content Include="Assets\Common\images\dribbble.png" />
+    <Content Include="Assets\Common\images\drop_arrow-hover.png" />
+    <Content Include="Assets\Common\images\drop_arrow.png" />
     <Content Include="Assets\Common\images\facebook.png" />
     <Content Include="Assets\Common\images\linkedin.png" />
+    <Content Include="Assets\Common\images\logo.png" />
     <Content Include="Assets\Common\images\products\12042017084640samsung_galaxy_s7_g930.png" />
     <Content Include="Assets\Common\images\products\1Hbmicrosoft_lumia_640_xl.png" />
     <Content Include="Assets\Common\images\products\31Fsamsung_galaxy_j5_2016.png" />
@@ -1194,6 +1221,7 @@
     <Content Include="Assets\Common\images\products\gg9microsoft_105.png" />
     <Content Include="Assets\Common\images\products\H6dhtc_e9_dual.png" />
     <Content Include="Assets\Common\images\products\H75asus_zenfone_selfie_zd551kl.png" />
+    <Content Include="Assets\Common\images\search.png" />
     <Content Include="Assets\Common\images\skype.png" />
     <Content Include="Assets\Common\images\slides\Banner_Discount_Travel.png" />
     <Content Include="Assets\Common\images\slides\banner_error404.png" />
@@ -1207,17 +1235,7 @@
     <Content Include="Assets\Common\images\slides\iPhone7_7plus-Red.png" />
     <Content Include="Assets\Common\images\slides\slide_main6.png" />
     <Content Include="Assets\Common\images\twitter.png" />
-    <Content Include="Assets\images\Slides\Banner_Discount_Travel.png" />
-    <Content Include="Assets\images\Slides\banner_error404.png" />
-    <Content Include="Assets\images\Slides\Banner_Gift.png" />
-    <Content Include="Assets\images\Slides\Cdslide_main6.png" />
-    <Content Include="Assets\images\Slides\F9slide_show4.png" />
-    <Content Include="Assets\images\Slides\FAslide_main4.png" />
-    <Content Include="Assets\images\Slides\GalaxyS8ProNew.png" />
-    <Content Include="Assets\images\Slides\GDslide_main2.jpg" />
-    <Content Include="Assets\images\Slides\GetGiftHuge.jpg" />
-    <Content Include="Assets\images\Slides\iPhone7_7plus-Red.png" />
-    <Content Include="Assets\images\Slides\slide_main6.png" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1257,6 +1275,14 @@
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\About\Index.cshtml" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\Fonts\Amble-Regular-webfont.ttf" />
+    <Content Include="Areas\Admin\Views\Map\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Map\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Map\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1280,14 +1306,25 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LeftNavigation.cshtml" />
+    <Content Include="Views\Shared\_Slider.cshtml" />
+    <Content Include="Views\Shared\_HeaderTopDesc.cshtml" />
+    <Content Include="Views\Shared\_HeaderTop.cshtml" />
+    <Content Include="Views\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Shared\_RightSidebar.cshtml" />
+    <Content Include="Views\Detail\Index.cshtml" />
+    <Content Include="Views\Detail\_RelatedProduct.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -36,6 +36,11 @@ namespace Model.DAO
             return db.Slides.OrderBy(x => x.DisplayOrder).ToList();
         }
 
+        public List<Slide> GetSlider()
+        {
+            return db.Slides.Where(x => x.Status).OrderBy(x => x.DisplayOrder).ToList();
+        }
+
         public bool Create(Slide slide)
         {
             try

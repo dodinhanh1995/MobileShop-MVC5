@@ -60,6 +60,20 @@ namespace Model.DAO
             return db.Contacts.Find(id);
         }
 
+        public bool Create(Contact contact)
+        {
+            try
+            {
+                db.Contacts.Add(contact);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool Delete(string id)
         {
             try

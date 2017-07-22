@@ -63,6 +63,7 @@
     <Compile Include="DAO\AboutDAO.cs" />
     <Compile Include="DAO\FooterDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
+    <Compile Include="DAO\MapDAO.cs" />
     <Compile Include="DAO\MenuTypeDAO.cs" />
     <Compile Include="DAO\ProductCategoryDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="EF\About.cs" />
     <Compile Include="EF\Contact.cs" />
     <Compile Include="EF\Footer.cs" />
+    <Compile Include="EF\Map.cs" />
     <Compile Include="EF\Menu.cs" />
     <Compile Include="EF\MenuType.cs" />
     <Compile Include="EF\MobileShopDbContext.cs" />

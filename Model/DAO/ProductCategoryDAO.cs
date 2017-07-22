@@ -1,7 +1,6 @@
 ﻿using Model.EF;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace Model.DAO
@@ -28,7 +27,7 @@ namespace Model.DAO
             }
         }
 
-        ProductCategoryDAO(){ }
+        ProductCategoryDAO() { }
 
         public List<ProductCategory> GetListAll()
         {
@@ -50,6 +49,11 @@ namespace Model.DAO
         public ProductCategory GetDetail(int id)
         {
             return db.ProductCategories.Find(id);
+        }
+
+        public ProductCategory GetDetail(string name)
+        {
+            return db.ProductCategories.SingleOrDefault(x => x.MetaTitle == name);
         }
 
         public bool CheckNameIsExist(string name)

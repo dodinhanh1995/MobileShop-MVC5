@@ -49,6 +49,7 @@ namespace MobileShop.Areas.Admin.Controllers
                     Address = userModel.Address,
                     Email = userModel.Email,
                     FullName = userModel.FullName,
+                    CreatedBy = User.Identity.Name,
                     Phone = userModel.Phone,
                     Status = userModel.Status,
                 }))

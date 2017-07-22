@@ -50,6 +50,7 @@ namespace MobileShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.CreateBy = User.Identity.Name;
                 if (ProductDAO.Instance.CheckNameIsExist(product.Name))
                     ModelState.AddModelError("Name", "Tên sản phẩm đã tồn tại");
                 else if (ProductDAO.Instance.Create(product))
@@ -85,6 +86,7 @@ namespace MobileShop.Areas.Admin.Controllers
             var oldProduct = ProductDAO.Instance.GetDetail(product.Id);
             product.Image = oldProduct.Image;
             product.CreatedDate = oldProduct.CreatedDate;
+            product.CreateBy = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 if (ProductDAO.Instance.CheckNameIsExist(product.Name) && oldProduct.Name != product.Name)

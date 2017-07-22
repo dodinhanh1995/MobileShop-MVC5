@@ -12,6 +12,7 @@ namespace Model.EF
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
+        public virtual DbSet<Map> Maps { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -37,6 +38,10 @@ namespace Model.EF
 
             modelBuilder.Entity<Footer>()
                 .Property(e => e.Id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Map>()
+                .Property(e => e.APIKey)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Menu>()

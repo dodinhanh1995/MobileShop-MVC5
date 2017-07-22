@@ -1,5 +1,6 @@
 ﻿using Model.EF;
 using PagedList;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -105,6 +106,16 @@ namespace Model.DAO
             {
                 return false;
             }
+        }
+
+        public List<Menu> GetAllByTypeId(int typeId)
+        {
+            try
+            {
+                var menus = db.Menus.OrderBy(x => x.DisplayOrder).Where(x => x.Status && x.TypeID == typeId).ToList();
+                return menus;
+            }
+            catch { return null; }
         }
     }
 }

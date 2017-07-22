@@ -3,6 +3,7 @@ using Common.Enum;
 
 namespace MobileShop.Areas.Admin.Controllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
         protected void SetAlert(string message, int type = (int)EAlertMessage.Success)

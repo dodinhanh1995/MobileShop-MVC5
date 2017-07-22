@@ -41,11 +41,12 @@
                             <tr>
                                 <th>@Html.CheckBox("chkDeleteAll", new { id = "chkDeleteAll" })</th>
                                 <th>Mã sản phẩm</th>
-                                <th width="240">@Html.ActionLink("Tên sản phẩm", "Index", new { @sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</th>
+                                <th width="200">@Html.ActionLink("Tên sản phẩm", "Index", new { @sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</th>
                                 <th>VAT</th>
-                                <th>Số lượng)</th>
+                                <th>SL</th>
                                 <th>Danh mục</th>
                                 <th>@Html.ActionLink("Ngày tạo", "Index", new { @sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })</th>
+                                <th>Người tạo</th>
                                 <th>Up Top</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
@@ -91,6 +92,7 @@
                                     <td>@product.CreatedDate.ToString("dd/MM/yyyy")</td>
                                     <td>@(product.TopHot.HasValue ? @product.TopHot.Value.ToString("dd/MM/yyyy") : "")</td>
                                     <td>@(product.Status == true ? "Hiển thị" : "Ẩn" )</td>
+                                    <td>@product.CreateBy </td>
                                     <td><a class="" href="@Url.Action("Edit", new { id = product.Id })"><i class="fa fa-edit"></i> Edit</a></td>
                                 </tr>
                             }
