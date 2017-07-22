@@ -1,0 +1,10 @@
+﻿@model List<Model.EF.Menu>
+<div class="categories">
+    <ul>
+        <h3>Danh mục</h3>
+        @foreach (var item in Model)
+        {
+            <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+        }
+    </ul>
+</div>

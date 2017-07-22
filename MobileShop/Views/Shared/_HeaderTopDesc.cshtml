@@ -1,0 +1,21 @@
+﻿@model List<Model.EF.Menu>
+<div class="call">
+    <p><span>Hỗ trợ?</span> liên hệ <span class="number">1-22-3456789</span></p>
+</div>
+<div class="account_desc">
+    <ul>
+        @if (Request.IsAuthenticated)
+        {
+            <li><a>xin chào @User.Identity.Name.ToUpper()</a></li>
+            <li>@Html.ActionLink("Đăng xuất", "Logout", "Login")</li>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+            }
+        }
+    </ul>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,43 @@
+﻿@model List<Model.EF.Slide>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="border:1px solid #EEE">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @{int dot = 0;}
+        @while (dot < Model.Count())
+        {
+        <li data-target="#myCarousel" data-slide-to="@dot" @(dot == 0 ? "class=active" : "")></li>
+            dot++;
+        }
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+       
+        @{int slide = 0; }
+        @foreach (var item in Model)
+        {
+           
+            <div class="item @(slide == 0 ? "active" : "")">
+                <a href="@item.Link" target="@item.Target"><img src="~/Assets/Common/images/slides/@item.Image" alt="@item.Name" title="@item.Name" style="width:100%; height:340px"></a>
+                <div class="carousel-caption">
+                    <p>@item.Description</p>
+                </div>
+            </div>
+            slide++;
+        }
+        
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div class="clear"></div>
